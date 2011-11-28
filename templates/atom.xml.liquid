@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>jklabs industries</title>
+ <link href="{{ root_path }}/atom.xml" rel="self"/>
+ <link href="{{ root_path }}"/>
+ {% for post in posts limit:1 %}
+ <updated>{{ post.modified_at | date_to_xmlschema }}</updated>
+ {% endfor %}
+ <id>{{ root_path }}</id>
+ <author>
+   <name>Jesse Kriss</name>
+   <email>jesse@jklabs.net</email>
+ </author>
+
+ {% for post in posts %}
+ <entry>
+   <title>{{ post.title }}</title>
+   <link href="{{ post.url }}"/>
+   <updated>{{ post.modified_at | date_to_xmlschema }}</updated>
+   <id>{{ post.url }}</id>
+   <content type="html">{{ post.content | xml_escape }}</content>
+ </entry>
+ {% endfor %}
+ 
+</feed>

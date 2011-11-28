@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jklabs industries</title>
+    <style type="text/css" media="screen">
+      * { margin: 0; padding: 0;}
+      body {
+        background: #fff;
+        font-family: futura-pt, Helvetica, Arial, sans-serif;
+        color: #888;
+      }
+
+      h1 {
+        font-family: cooper-black-std, Georgia, serif;
+        font-weight: normal;
+        font-size: 4em;
+        color: #ddd;
+        margin-bottom: 40px;
+      }
+
+      .content {
+        margin-bottom: 10px;
+      }
+
+      .footer {
+        font-weight: 100;
+        font-size: 0.8em;
+      }
+
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      p {
+         line-height: 1.5em;
+
+      }
+
+      #main {
+        width: 600px;
+        margin: 60px auto 0 auto;
+      }
+
+      .post {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px dotted #ddd;
+      }
+
+      .post:last-child {
+        border: none;
+      }
+      
+      h2 a {
+        color: #ddd;
+        text-decoration: none;
+      }
+
+      h2 a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <script type="text/javascript" src="http://use.typekit.com/tzn2lng.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  </head>
+  <body>
+    
+    <div id="main">
+      <h1>jklabs industries</h1>
+    
+      {% for post in posts %}
+        <div class="post">
+          <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+          <div class="content">
+            {{ post.content }}
+          </div>
+          <div class="footer">
+            <img src="{{ post.gravatar }}?s=10" alt="{{ post.author.name }}"/>
+            <span class="author">{{ post.author.name | split:" " | first }}</span>
+            &mdash;
+            <span class="date">{{ post.created_at | date: '%d %b %Y' }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
